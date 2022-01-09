@@ -24,7 +24,7 @@ exports.handler = async (event) => {
         };
         let inputData = await s3.getObject(params).promise();
 
-        // Resize the file
+        // Resize the file; os will give access to the temp dir for lambda execution
         let tempFile = os.tmpdir() + '/' + uuidv4() + '.jpg';
         let resizeArgs = {
             srcData: inputData.Body,
